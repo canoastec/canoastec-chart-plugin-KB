@@ -19,7 +19,7 @@ class SearchSprintService extends Base
             ->executeMethod(
                 new TaskProcedure($this->container), 
                 'searchTasks', 
-                [1, '']
+                [env('PROJECT_ID'), '']
             );
         $tasks = collect($tasks);
 
@@ -35,7 +35,7 @@ class SearchSprintService extends Base
             ->executeMethod(
                 new TaskProcedure($this->container), 
                 'searchTasks', 
-                [1, 'column:Andamento']
+                [env('PROJECT_ID'), 'column:Andamento']
             );
         $sprint = collect($sprint);
 
@@ -80,7 +80,7 @@ class SearchSprintService extends Base
             ->executeMethod(
                 new TaskProcedure($this->container), 
                 'searchTasks', 
-                [1, "id:".$sprintId]
+                [env('PROJECT_ID'), "id:".$sprintId]
             );
         $sprint = collect($sprint);
 
