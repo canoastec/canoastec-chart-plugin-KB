@@ -37,7 +37,6 @@ class GenerateDataChartService
     private function getSeasonCompareHomeOffice()
     {
         $sprints = $this->searchSprintService->getAllSprints()->keyBy('title');
-        
         $currentSprint = $this->searchSprintService->getCurrentSprint();
         $currentSprint = (int)str_replace("Sprint ", "", $currentSprint['title']);
         
@@ -67,6 +66,7 @@ class GenerateDataChartService
             array_push($spentData, $sprint['spent']);
         }
         return (object) [
+            'title'=> 'Total de horas',
             'labels'=> $labels,
             'datasets' => [
                 (object)[
@@ -94,6 +94,7 @@ class GenerateDataChartService
             })->count());
         }
         return (object) [
+            'title' => 'Total de tarefas executadas',
             'labels'=> $labels,
             'datasets' => [
                 (object)[
@@ -114,6 +115,7 @@ class GenerateDataChartService
             array_push($percentSpentData, round((int)100*($sprint['spent']/$sprint['estimated'])));
         }
         return (object) [
+            'title'=> 'Percentual utilizado do tempo estimado (total '.$percentSpentData.')',
             'labels'=> $labels,
             'datasets' => [
                 (object)[

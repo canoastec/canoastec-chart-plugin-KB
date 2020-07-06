@@ -11,8 +11,10 @@ class Plugin extends Base
 {
     public function initialize()
     {
+        $this->setContentSecurityPolicy(array('script-src' => "'self' 'unsafe-inline' 'unsafe-eval'"));
+        $this->hook->on('template:layout:js', array('template' => 'plugins/canoastecchart/dist/all.js'));
+
         $this->template->hook->attach('template:dashboard:sidebar', 'canoastecchart:dashboard/sidebar');
-        $this->route->addRoute('Gráfico estimativa x executado', 'TesteController', 'show', 'canoastefirstplugin');
     }
     
     public function getClasses()
