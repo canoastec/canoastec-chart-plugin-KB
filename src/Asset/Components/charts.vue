@@ -24,9 +24,9 @@
         this.timeCharts = this.data.datasets;
         return this.chartData = this.timeCharts.map(function(data){
           return {
-              name: data.label,
-              color: data.color,
-              data:  [["Sprint_1", 2],["Sprint_2", 10],["Sprint_3", 24], ["Sprint_4", 0]]
+            name: data.label,
+            color: data.color,
+            data: data.data.map((data) => { return [data.name, data.data] }),
           };
         });
       }

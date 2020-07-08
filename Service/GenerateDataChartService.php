@@ -39,7 +39,6 @@ class GenerateDataChartService
         $sprints = $this->searchSprintService->getAllSprints()->keyBy('title');
         $currentSprint = $this->searchSprintService->getCurrentSprint();
         $currentSprint = (int)str_replace("Sprint ", "", $currentSprint['title']);
-        
         $seasonSprints = [];
         for ($i = 75-($currentSprint-75); $i <= 75; $i++) {
             array_push($seasonSprints, "Sprint ".$i);
@@ -65,6 +64,15 @@ class GenerateDataChartService
             array_push($estimatedData, $sprint['estimated']);
             array_push($spentData, $sprint['spent']);
         }
+
+        foreach($estimatedData as $key => $data){
+            $estimated[$key] = (object) array('name' => "(".$labels[$key].")", 'data' => $data); 
+        }
+
+        foreach($spentData as $key => $data){
+            $spent[$key] = (object) array('name' => "(".$labels[$key].")", 'data' => $data); 
+        }
+
         return (object) [
             'title'=> 'Total de horas',
             'labels'=> $labels,
@@ -72,12 +80,12 @@ class GenerateDataChartService
                 (object)[
                     'label' => 'Tempo estimado ('.collect($estimatedData)->sum().' horas)',
                     'color' => 'red',
-                    'data' => $estimatedData
+                    'data' => $estimated
                 ],
                 (object)[
                     'label' => 'Tempo executado ('.collect($spentData)->sum().' horas)',
                     'color' => 'blue',
-                    'data' => $spentData
+                    'data' => $spent
                 ]
             ]
         ];
@@ -93,6 +101,11 @@ class GenerateDataChartService
                 return $task['task_time_spent'] != '0';
             })->count());
         }
+        
+        foreach($tasksData as $key => $data){
+            $tasks[$key] = (object) array('name' => "(".$labels[$key].")", 'data' => $data); 
+        }
+
         return (object) [
             'title' => 'Total de tarefas executadas',
             'labels'=> $labels,
@@ -100,7 +113,7 @@ class GenerateDataChartService
                 (object)[
                     'label' => 'Total de tarefas',
                     'color' => 'orange',
-                    'data' => $tasksData
+                    'data' => $tasks
                 ]
             ]
         ];
@@ -114,14 +127,18 @@ class GenerateDataChartService
             array_push($labels, $sprint['title']);
             array_push($percentSpentData, round((int)100*($sprint['spent']/$sprint['estimated'])));
         }
+        foreach($percentSpentData as $key => $data){
+            $percentSpent[$key] = (object) array('name' => "(".$labels[$key].")", 'data' => $data); 
+        }
+
         return (object) [
-            'title'=> 'Percentual utilizado do tempo estimado (total '.$percentSpentData.')',
+            'title'=> 'Percentual utilizado do tempo estimado (total '.round((int)100*($sprints->sum('spent')/$sprints->sum('estimated'))).'%)',
             'labels'=> $labels,
             'datasets' => [
                 (object)[
                     'label' => 'Percentual utilizado do tempo estimado',
                     'color' => 'green',
-                    'data' => $percentSpentData
+                    'data' => $percentSpent
                 ]
             ]
         ];
