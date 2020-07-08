@@ -39,7 +39,6 @@
     text-align: center;
   }
   .chart-vue{
-    background: whitesmoke;
     margin: 20px 150px 10px 10px;
   }
 </style>
