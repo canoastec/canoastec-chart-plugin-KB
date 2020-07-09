@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <project name="canostecchart" default="zip" basedir="." xmlns:if="ant:if" xmlns:unless="ant:unless">
+    <project name="CanoastecChart" default="zip" basedir="." xmlns:if="ant:if" xmlns:unless="ant:unless">
     <property environment="env"/>
     <property file="./build.properties" />
 
@@ -47,6 +47,6 @@
 
     <target name="zip" depends="remove-dev-npm">
         <defaultexcludes default="true"/>
-        <zip destfile="${binary-folder}/CanoastecChart.zip" basedir="." excludes="CHANGE*.txt, .gitignore, *.sh,nbproject/, build.xml, results/, bin/, tests/, phpunit.xml" />
+        <zip destfile="${binary-folder}/${project-name}.zip" basedir="." excludes="CHANGE*.txt, .gitignore, *.sh,nbproject/, build.xml, results/, bin/, tests/, phpunit.xml" />
     </target>
 </project>
