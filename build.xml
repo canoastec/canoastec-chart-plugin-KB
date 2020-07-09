@@ -15,7 +15,7 @@
         <echo>Getting dependencies from composer</echo>
         <exec executable="sh"  failonerror="true" >
             <arg value="-c" />
-            <arg value="composer install" />
+            <arg value="php72 /usr/local/bin/composer/composer.phar install" />
         </exec>
     </target>
 
