@@ -32,6 +32,11 @@
         </exec>
     </target>
 
+    <target name="clean" depends="clean-config">
+        <delete file="bin/${project-name}.zip" />
+        <mkdir dir="${binary-folder}"/>
+    </target>
+
     <target name="webpack" depends="env-create">
         <echo>Generating CSS and JS files</echo>
         <exec executable="sh" failonerror="true">
