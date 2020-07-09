@@ -21,17 +21,13 @@ class Plugin extends Base
     {
         return array(
             'Plugin\CanoastecChart\Controller' => array(
-                'TasksController',
                 'DashboardController'
-            ),
-            'Plugin\CanoastecChart\Model' => array(
-                'UsuarioModel'
             )
         );
     }
 
-    public function registeringNewHelpers(){
-        $this->helper->register('myhelper', '\Kanboard\Plugin\CanoastecChart\Helper\MyHelper');
+    public function registeringNewHelpers()
+    {
     }
 
     public function onStartup()

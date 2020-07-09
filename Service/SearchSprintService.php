@@ -35,7 +35,7 @@ class SearchSprintService extends Base
             ->executeMethod(
                 new TaskProcedure($this->container), 
                 'searchTasks', 
-                [env('PROJECT_ID'), 'column:Andamento']
+                [env('PROJECT_ID'), env('QUERY_CURRENT_SPRINT')]
             );
         $sprint = collect($sprint);
 
