@@ -38,7 +38,7 @@
             <arg value="-c" />
             <arg value="npm run dev" />
         </exec>
-    </>
+    </target>
 
 	<target name="remove-dev-npm" depends="webpack" >
         <echo>Remove NPM dev dependencies</echo>
