@@ -36,15 +36,15 @@ npm run dev
 
 ``` bash
 PROJECT_ID="ID DO PROJECT KANBOARD"
-COLUMN="COLUMN DO PROJECT KANBOARD"
+QUERY_CURRENT_SPRINT="QUERY FOR SEARCH SPRINT CURRENT"
 ```
 
 - Substitua o **"ID DO PROJECT KANBOARD"**, pelo o id do projeto da onde quer tirar as informações.
 
-- Substitua o **"COLUMN DO PROJECT KANBOARD"**, pela query de busca de tarefas do kanboard. Exemplo:
+- Substitua o **"QUERY FOR SEARCH SPRINT CURRENT"**, pela query de busca de tarefas do kanboard. Exemplo:
   
 ``` bash 
-COLUMN="column:Andamento" 
+QUERY_CURRENT_SPRINT="column:Andamento" 
 ```
 
 - E execute o kanboard normalmente, o gráfico gerado pelo plugin pode ser visto na página inicial do kanboard, no menu lateral, menu **Grafico estimado x executado**
