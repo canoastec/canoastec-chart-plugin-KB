@@ -1,3 +1,5 @@
 *.zip
 /vendor
 .env
+/node_modules
+/dist
