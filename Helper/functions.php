@@ -1,7 +1,6 @@
 <?php
 require __DIR__.'/../vendor/autoload.php';
 use Dotenv\Dotenv;
-use Dotenv\Util\Str;
 
 function env($key, $default = null)
 {
@@ -28,9 +27,24 @@ function env($key, $default = null)
             return;
     }
 
-    if (strlen($value) > 1 && Str::startsWith($value, '"') && Str::endsWith($value, '"')) {
+    if (strlen($value) > 1 && startsWith($value, '"') && endsWith($value, '"')) {
         return substr($value, 1, -1);
     }
 
     return $value;
+}
+
+function startsWith ($string, $startString) 
+{ 
+    $len = strlen($startString); 
+    return (substr($string, 0, $len) === $startString); 
+} 
+
+function endsWith($string, $endString) 
+{ 
+    $len = strlen($endString); 
+    if ($len == 0) { 
+        return true; 
+    } 
+    return (substr($string, -$len) === $endString); 
 }
