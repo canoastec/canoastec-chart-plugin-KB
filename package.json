@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/canoastec/canoastec-chart-plugin-KB#readme",
   "devDependencies": {
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "cross-env": "^7.0.2",
     "laravel-mix": "^5.0.4",
     "vue": "^2.6.11",
